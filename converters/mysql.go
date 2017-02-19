@@ -16,6 +16,8 @@ func (mySQL) ColumnToString(col interface{}) (string, error) {
 			return strconv.Itoa(int(byts[0])), nil
 		}
 		return string(col.([]byte)), nil
+	case nil:
+		return `\N`, nil
 	default:
 		// Need to handle anything that ends up here
 		return "", fmt.Errorf("Unknown column type %v", col)

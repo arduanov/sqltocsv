@@ -16,7 +16,7 @@ import (
 	// Load sqlx over database/sql
 	"github.com/jmoiron/sqlx"
 
-	"github.com/StabbyCutyou/sqltocsv/converters"
+	"sqltocsv/converters"
 )
 
 type config struct {
@@ -104,7 +104,11 @@ func run(cfg *config) error {
 			// TODO Inject obfuscating here before quoting
 			if _, ok := quoteCols[i]; ok {
 				//val = "'" + val + "'" // This method is actually faster than sprintf
+				
+			if(val != `\N`) {
 				val = fmt.Sprintf("\"%s\"", val)
+			}
+
 			}
 			rowStrings[i] = val
 		}
