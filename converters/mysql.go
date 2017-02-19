@@ -15,9 +15,13 @@ func (mySQL) ColumnToString(col interface{}) (string, error) {
 		if len(byts) == 1 && (byts[0] == 0 || byts[0] == 1) {
 			return strconv.Itoa(int(byts[0])), nil
 		}
-		return string(col.([]byte)), nil
+		s := string(col.([]byte))
+		if(s=="0000-00-00 00:00:00"){
+			s=""
+		}
+		return s, nil
 	case nil:
-		return `\N`, nil
+		return "", nil
 	default:
 		// Need to handle anything that ends up here
 		return "", fmt.Errorf("Unknown column type %v", col)
