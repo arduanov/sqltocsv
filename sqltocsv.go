@@ -31,7 +31,7 @@ type config struct {
 }
 
 var delimiters = map[string]rune{
-	"tab": rune('	'), //That's a tab in there, yo
+	"tab":   rune('	'), //That's a tab in there, yo
 	"comma": rune(','),
 }
 
@@ -104,10 +104,10 @@ func run(cfg *config) error {
 			// TODO Inject obfuscating here before quoting
 			if _, ok := quoteCols[i]; ok {
 				//val = "'" + val + "'" // This method is actually faster than sprintf
-				
-			if(val != `\N`) {
-				val = fmt.Sprintf("\"%s\"", val)
-			}
+
+				if (val != "") {
+					val = fmt.Sprintf("\"%s\"", val)
+				}
 
 			}
 			rowStrings[i] = val
