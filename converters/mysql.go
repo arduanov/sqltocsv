@@ -16,8 +16,8 @@ func (mySQL) ColumnToString(col interface{}) (string, error) {
 			return strconv.Itoa(int(byts[0])), nil
 		}
 		s := string(col.([]byte))
-		if(s=="0000-00-00 00:00:00"){
-			s=""
+		if (s == "0000-00-00 00:00:00") {
+			s = ""
 		}
 		return s, nil
 	case nil:
