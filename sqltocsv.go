@@ -16,7 +16,7 @@ import (
 	// Load sqlx over database/sql
 	"github.com/jmoiron/sqlx"
 
-	"sqltocsv/converters"
+	"github.com/arduanov/sqltocsv/converters"
 )
 
 type config struct {
